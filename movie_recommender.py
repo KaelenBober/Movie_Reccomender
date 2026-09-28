@@ -18,7 +18,7 @@ model = LightFM(loss = "warp")
 
 
 #train model
-model.fit(data['train'], epoch=30, num_threads=2)
+model.fit(data['train'], epochs=30, num_threads=2)
 
 def sample_reccomendation(model, data, user_ids):
 
@@ -32,7 +32,7 @@ def sample_reccomendation(model, data, user_ids):
         known_pos = data['item_labels'][data['train'].tocsr()[user_id].indices]
 
         #movies the model predicts will be liked
-        scores = model.predict(user_id, np.arage(n_items))
+        scores = model.predict(user_id, np.arange(n_items))
         #ranks in order most liked to least
         top_items = data['item_labels'][np.argsort(-scores)]
 
